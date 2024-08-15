@@ -23,4 +23,7 @@ tar -C /opt -xzf nvim-linux64.tar.gz
 echo "Creating symlink for Neovim..."
 ln -sf /opt/nvim-linux64/bin/nvim /usr/local/bin/nvim
 
+echo "Cloning Kickstart configuration..."
+git clone https://github.com/nvim-lua/kickstart.nvim.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
+
 echo "Neovim installation complete. You can run 'nvim' to start Neovim."
