@@ -1,0 +1,17 @@
+#!/bin/bash
+
+if [ "$EUID" -ne 0 ]; then 
+  echo "Please run this script as root."
+  exit 1
+fi
+
+read -p "Enter the new username: " USERNAME
+read -s -p "Enter the password for $USERNAME: " PASSWORD
+echo
+
+useradd -m -s /bin/bash "$USERNAME"
+echo "$USERNAME:$PASSWORD" | chpasswd
+
+usermod -aG sudo "$USERNAME"
+
+echo "User $USERNAME has been successfully created and added to the sudo group."
