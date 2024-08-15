@@ -36,9 +36,6 @@ groupadd docker
 echo "Adding the current user to the docker group..."
 usermod -aG docker $USER
 
-echo "Activating new group membership..."
-exec sg docker newgrp `id -gn`
-
 echo "Verifying Docker installation..."
 docker --version
 
